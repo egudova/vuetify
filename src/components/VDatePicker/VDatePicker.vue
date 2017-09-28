@@ -68,7 +68,8 @@
         type: [String, Number],
         default: 0
       },
-      yearIcon: String
+      yearIcon: String,
+      localeDays: Boolean
     },
 
     computed: {
