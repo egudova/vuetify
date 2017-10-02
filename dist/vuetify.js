@@ -9184,7 +9184,8 @@ var defaultDateFormat = function defaultDateFormat(val) {
       type: [String, Number],
       default: 0
     },
-    yearIcon: String
+    yearIcon: String,
+    localeDays: Boolean
   },
 
   computed: {
@@ -9568,7 +9569,7 @@ var defaultDateFormat = function defaultDateFormat(val) {
 
       var _loop = function _loop(_i) {
         var date = new Date(_this3.tableYear, _this3.tableMonth, _i, 12, 0, 0, 0);
-        var buttonText = _this3.supportsLocaleFormat ? date.toLocaleDateString(_this3.locale, { day: 'numeric' }) : _i;
+        var buttonText = _this3.localeDays && _this3.supportsLocaleFormat ? date.toLocaleDateString(_this3.locale, { day: 'numeric' }) : _i;
         rows.push(_this3.$createElement('td', [_this3.$createElement('button', {
           'class': {
             'btn btn--date-picker btn--floating btn--small btn--flat': true,
