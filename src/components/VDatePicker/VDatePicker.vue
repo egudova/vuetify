@@ -138,6 +138,12 @@
       },
       value (val) {
         if (val) this.tableDate = this.inputDate
+      },
+      tableMonth () {
+        this.$emit('turn', {
+          month: this.tableDate.getMonth(),
+          year: this.tableDate.getFullYear()
+        })
       }
     },
 
