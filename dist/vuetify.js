@@ -9255,6 +9255,12 @@ var defaultDateFormat = function defaultDateFormat(val) {
     },
     value: function value(val) {
       if (val) this.tableDate = this.inputDate;
+    },
+    tableMonth: function tableMonth() {
+      this.$emit('turn', {
+        month: this.tableDate.getMonth(),
+        year: this.tableDate.getFullYear()
+      });
     }
   },
 
