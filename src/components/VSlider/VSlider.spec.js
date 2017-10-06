@@ -4,7 +4,7 @@ import VSlider from './VSlider'
 const warning = 'The v-slider component requires the present of v-app or a non-body wrapping element with the [data-app] attribute.'
 
 test('Vslider.vue', ({ mount }) => {
-  it('shoud work', () => {
+  it('should match a snapshot', () => {
     const wrapper = mount(VSlider)
 
     expect(wrapper.html()).toMatchSnapshot()
@@ -53,6 +53,24 @@ test('Vslider.vue', ({ mount }) => {
     await wrapper.vm.$nextTick()
     expect(input).toBeCalledWith(4)
 
+    expect(warning).toHaveBeenTipped()
+  })
+
+  it('should be focused when active', async () => {
+    const wrapper = mount(VSlider, {
+      propsData: {
+        value: 5,
+        min: 0,
+        max: 10
+      }
+    })
+
+    wrapper.setData({ isActive: true })
+
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.vm.isFocused).toBe(true)
+    expect(wrapper.html()).toMatchSnapshot()
     expect(warning).toHaveBeenTipped()
   })
 })

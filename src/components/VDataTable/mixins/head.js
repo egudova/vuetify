@@ -17,7 +17,7 @@ export default {
           props: {
             dark: this.dark,
             light: this.light,
-            color: this.selectAll === true && '' || this.selectAll,
+            color: this.selectAll === true ? '' : this.selectAll,
             hideDetails: true,
             inputValue: this.all,
             indeterminate: this.indeterminate
@@ -59,6 +59,11 @@ export default {
       }
 
       classes.push(`text-xs-${header.align || 'right'}`)
+      if (Array.isArray(header.class)) {
+        classes.push(...header.class)
+      } else if (header.class) {
+        classes.push(header.class)
+      }
       data.class = classes
 
       return [data, children]
@@ -70,7 +75,10 @@ export default {
 
       data.attrs.tabIndex = 0
       data.on = {
-        click: () => this.sort(header.value),
+        click: () => {
+          this.expanded = []
+          this.sort(header.value)
+        },
         keydown: e => {
           // check for space
           if (e.keyCode === 32) {
