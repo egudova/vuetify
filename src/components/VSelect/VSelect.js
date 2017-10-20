@@ -446,7 +446,6 @@ export default {
         focus: () => {
           if (this.disabled || this.readonly) return
 
-          alert('genListeners')
           !this.isFocused && this.focus()
         },
         keydown: this.onKeyDown // Located in mixins/select-autocomplete.js
@@ -609,6 +608,7 @@ export default {
           setTimeout(() => {
             if (this.menuIsActive) return
 
+            alert('100timeout')
             this.focus()
             this.menuIsActive = true
           }, 100)

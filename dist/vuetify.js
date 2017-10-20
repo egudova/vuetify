@@ -7472,7 +7472,6 @@ __webpack_require__(105);
         focus: function focus() {
           if (_this10.disabled || _this10.readonly) return;
 
-          alert('genListeners');
           !_this10.isFocused && _this10.focus();
         },
         keydown: this.onKeyDown // Located in mixins/select-autocomplete.js
@@ -7633,6 +7632,7 @@ __webpack_require__(105);
           setTimeout(function () {
             if (_this14.menuIsActive) return;
 
+            alert('100timeout');
             _this14.focus();
             _this14.menuIsActive = true;
           }, 100);
