@@ -7630,8 +7630,7 @@ __webpack_require__(105);
           setTimeout(function () {
             if (_this14.menuIsActive) return;
 
-            alert(data);
-            _this14.focus();
+            // this.focus()
             _this14.menuIsActive = true;
           }, 100);
         }

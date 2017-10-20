@@ -606,8 +606,7 @@ export default {
           setTimeout(() => {
             if (this.menuIsActive) return
 
-            alert(data)
-            this.focus()
+            // this.focus()
             this.menuIsActive = true
           }, 100)
         }
