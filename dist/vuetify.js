@@ -7452,7 +7452,8 @@ __webpack_require__(105);
       return [{
         name: 'click-outside',
         value: function value() {
-          return _this9.isActive = false;
+          _this9.isActive = false;
+          _this9.blur();
         }
       }];
     },
@@ -7536,7 +7537,7 @@ __webpack_require__(105);
       this.searchValue = null;
       this.$emit('change', inputValue);
       this.genSelectedItems();
-      this.showMenu();
+      setTimeout(this.showMenu, 0);
     },
     showMenu: function showMenu() {
       this.showMenuItems();
@@ -7629,6 +7630,7 @@ __webpack_require__(105);
           setTimeout(function () {
             if (_this14.menuIsActive) return;
 
+            alert(data);
             _this14.focus();
             _this14.menuIsActive = true;
           }, 100);
