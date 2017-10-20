@@ -426,7 +426,10 @@ export default {
     genDirectives () {
       return [{
         name: 'click-outside',
-        value: () => (this.isActive = false)
+        value: () => {
+          this.isActive = false
+          this.blur()
+        }
       }]
     },
     genListeners () {
