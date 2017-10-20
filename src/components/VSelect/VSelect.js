@@ -446,6 +446,7 @@ export default {
         focus: () => {
           if (this.disabled || this.readonly) return
 
+          alert('genListeners')
           !this.isFocused && this.focus()
         },
         keydown: this.onKeyDown // Located in mixins/select-autocomplete.js
@@ -516,6 +517,7 @@ export default {
     },
     showMenu () {
       this.showMenuItems()
+      alert('showMenu')
       this.isAutocomplete && this.focus()
     },
     onScroll () {
@@ -570,6 +572,7 @@ export default {
       this.$refs.menu.listIndex = -1
 
       this.$nextTick(() => {
+        alert('selectItem')
         if (this.isAutocomplete &&
           this.$refs.input
         ) this.$refs.input.focus()
@@ -606,8 +609,8 @@ export default {
           setTimeout(() => {
             if (this.menuIsActive) return
 
-            // this.focus()
-            // this.menuIsActive = true
+            this.focus()
+            this.menuIsActive = true
           }, 100)
         }
       }

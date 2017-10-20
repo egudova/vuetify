@@ -7472,6 +7472,7 @@ __webpack_require__(105);
         focus: function focus() {
           if (_this10.disabled || _this10.readonly) return;
 
+          alert('genListeners');
           !_this10.isFocused && _this10.focus();
         },
         keydown: this.onKeyDown // Located in mixins/select-autocomplete.js
@@ -7541,6 +7542,7 @@ __webpack_require__(105);
     },
     showMenu: function showMenu() {
       this.showMenuItems();
+      alert('showMenu');
       this.isAutocomplete && this.focus();
     },
     onScroll: function onScroll() {
@@ -7595,6 +7597,7 @@ __webpack_require__(105);
       this.$refs.menu.listIndex = -1;
 
       this.$nextTick(function () {
+        alert('selectItem');
         if (_this13.isAutocomplete && _this13.$refs.input) _this13.$refs.input.focus();else _this13.$el.focus();
         _this13.$refs.menu && (_this13.$refs.menu.listIndex = savedIndex);
       });
@@ -7630,8 +7633,8 @@ __webpack_require__(105);
           setTimeout(function () {
             if (_this14.menuIsActive) return;
 
-            // this.focus()
-            // this.menuIsActive = true
+            _this14.focus();
+            _this14.menuIsActive = true;
           }, 100);
         }
       };
