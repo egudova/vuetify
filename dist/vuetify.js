@@ -7631,7 +7631,7 @@ __webpack_require__(105);
             if (_this14.menuIsActive) return;
 
             // this.focus()
-            _this14.menuIsActive = true;
+            // this.menuIsActive = true
           }, 100);
         }
       };

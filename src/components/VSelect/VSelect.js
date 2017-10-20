@@ -607,7 +607,7 @@ export default {
             if (this.menuIsActive) return
 
             // this.focus()
-            this.menuIsActive = true
+            // this.menuIsActive = true
           }, 100)
         }
       }
