@@ -415,6 +415,7 @@ export default {
       this.isActive = true
       this.isFocused = true
 
+      alert('focus')
       if (this.$refs.input && this.isAutocomplete) {
         this.$refs.input.focus()
       } else {
@@ -516,7 +517,6 @@ export default {
     },
     showMenu () {
       this.showMenuItems()
-      alert('showMenu')
       this.isAutocomplete && this.focus()
     },
     onScroll () {
@@ -571,7 +571,6 @@ export default {
       this.$refs.menu.listIndex = -1
 
       this.$nextTick(() => {
-        alert('selectItem')
         if (this.isAutocomplete &&
           this.$refs.input
         ) this.$refs.input.focus()
@@ -608,7 +607,6 @@ export default {
           setTimeout(() => {
             if (this.menuIsActive) return
 
-            alert('100timeout')
             this.focus()
             this.menuIsActive = true
           }, 100)

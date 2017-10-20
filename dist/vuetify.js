@@ -7438,6 +7438,7 @@ __webpack_require__(105);
       this.isActive = true;
       this.isFocused = true;
 
+      alert('focus');
       if (this.$refs.input && this.isAutocomplete) {
         this.$refs.input.focus();
       } else {
@@ -7541,7 +7542,6 @@ __webpack_require__(105);
     },
     showMenu: function showMenu() {
       this.showMenuItems();
-      alert('showMenu');
       this.isAutocomplete && this.focus();
     },
     onScroll: function onScroll() {
@@ -7596,7 +7596,6 @@ __webpack_require__(105);
       this.$refs.menu.listIndex = -1;
 
       this.$nextTick(function () {
-        alert('selectItem');
         if (_this13.isAutocomplete && _this13.$refs.input) _this13.$refs.input.focus();else _this13.$el.focus();
         _this13.$refs.menu && (_this13.$refs.menu.listIndex = savedIndex);
       });
@@ -7632,7 +7631,6 @@ __webpack_require__(105);
           setTimeout(function () {
             if (_this14.menuIsActive) return;
 
-            alert('100timeout');
             _this14.focus();
             _this14.menuIsActive = true;
           }, 100);
