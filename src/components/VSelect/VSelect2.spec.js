@@ -46,7 +46,7 @@ test('VSelect.vue', ({ mount }) => {
 
     clear.trigger('click')
 
-    await wrapper.vm.$nextTick()
+    await new Promise(resolve => setTimeout(resolve, 0))
 
     expect(wrapper.vm.inputValue).toBe(null)
     expect(input).toHaveBeenCalledWith(null)
@@ -65,7 +65,7 @@ test('VSelect.vue', ({ mount }) => {
     const input = wrapper.find('.input-group__input')[0]
 
     input.trigger('click')
-    await wrapper.vm.$nextTick()
+    await new Promise(resolve => setTimeout(resolve, 0))
 
     expect(wrapper.vm.menuIsActive).toBe(false)
     expect('Application is missing <v-app> component.').toHaveBeenTipped()

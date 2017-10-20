@@ -509,7 +509,7 @@ export default {
       this.searchValue = null
       this.$emit('change', inputValue)
       this.genSelectedItems()
-      this.showMenu()
+      setTimeout(this.showMenu, 0)
     },
     showMenu () {
       this.showMenuItems()
