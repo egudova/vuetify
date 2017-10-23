@@ -67,7 +67,8 @@ export default {
       searchTimeout: null,
       selectedIndex: -1,
       selectedItems: [],
-      shouldBreak: false
+      shouldBreak: false,
+      isClosing: false
     }
   },
 
@@ -415,7 +416,6 @@ export default {
       this.isActive = true
       this.isFocused = true
 
-      alert('focus')
       if (this.$refs.input && this.isAutocomplete) {
         this.$refs.input.focus()
       } else {
@@ -430,6 +430,7 @@ export default {
         value: () => {
           this.isActive = false
           this.blur()
+          this.isClosing = true
         }
       }]
     },
@@ -444,7 +445,13 @@ export default {
           this.showMenuItems()
           this.selectedIndex = -1
         },
-        focus: () => {
+        focus: (e) => {
+          if (this.isClosing) {
+            this.isClosing = false
+            e.target.blur()
+            return
+          }
+
           if (this.disabled || this.readonly) return
 
           !this.isFocused && this.focus()
