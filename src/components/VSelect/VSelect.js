@@ -67,7 +67,8 @@ export default {
       searchTimeout: null,
       selectedIndex: -1,
       selectedItems: [],
-      shouldBreak: false
+      shouldBreak: false,
+      isClosing: false
     }
   },
 
@@ -426,7 +427,11 @@ export default {
     genDirectives () {
       return [{
         name: 'click-outside',
-        value: () => (this.isActive = false)
+        value: () => {
+          this.isActive = false
+          this.blur()
+          this.isClosing = true
+        }
       }]
     },
     genListeners () {
@@ -440,7 +445,13 @@ export default {
           this.showMenuItems()
           this.selectedIndex = -1
         },
-        focus: () => {
+        focus: (e) => {
+          if (this.isClosing) {
+            this.isClosing = false
+            e.target.blur()
+            return
+          }
+
           if (this.disabled || this.readonly) return
 
           !this.isFocused && this.focus()
@@ -509,7 +520,7 @@ export default {
       this.searchValue = null
       this.$emit('change', inputValue)
       this.genSelectedItems()
-      this.showMenu()
+      setTimeout(this.showMenu, 0)
     },
     showMenu () {
       this.showMenuItems()

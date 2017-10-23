@@ -7092,7 +7092,8 @@ __webpack_require__(105);
       searchTimeout: null,
       selectedIndex: -1,
       selectedItems: [],
-      shouldBreak: false
+      shouldBreak: false,
+      isClosing: false
     };
   },
 
@@ -7452,7 +7453,9 @@ __webpack_require__(105);
       return [{
         name: 'click-outside',
         value: function value() {
-          return _this9.isActive = false;
+          _this9.isActive = false;
+          _this9.blur();
+          _this9.isClosing = true;
         }
       }];
     },
@@ -7468,7 +7471,13 @@ __webpack_require__(105);
           _this10.showMenuItems();
           _this10.selectedIndex = -1;
         },
-        focus: function focus() {
+        focus: function focus(e) {
+          if (_this10.isClosing) {
+            _this10.isClosing = false;
+            e.target.blur();
+            return;
+          }
+
           if (_this10.disabled || _this10.readonly) return;
 
           !_this10.isFocused && _this10.focus();
@@ -7536,7 +7545,7 @@ __webpack_require__(105);
       this.searchValue = null;
       this.$emit('change', inputValue);
       this.genSelectedItems();
-      this.showMenu();
+      setTimeout(this.showMenu, 0);
     },
     showMenu: function showMenu() {
       this.showMenuItems();
